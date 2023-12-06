@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+    db:
+        image: mariadb
+        container_name: db_mariadb_sms
+        environment:
+            MARIADB_ROOT_PASSWORD: 123456
+            MARIADB_USER: sms_auth
+            MARIADB_DATABASE: sms_auth
+            MARIADB_PASSWORD: 123456
+        ports:
+            - 9898:3306
+        volumes:
+            - mariadb_data:/opt/mariadb
+
+    redis:
+        image: 'redis:latest'
+        ports:
+            - 6363:6379
+
+volumes:
+    mariadb_data:
